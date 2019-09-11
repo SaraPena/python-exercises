@@ -26,10 +26,10 @@ pay += hercules_days * rental_price_per_day
 # How much will you recieve in payment for this week? You worked 10
 # hours for Facebook, 6 hours for Google and 4 hours for Amazon.
 
-Amazon = [380, 4]
-Google = [400, 6]
-Facebook = [350, 10]
-pay = Amazon[0] * Amazon[1] + Google[0]*Google[1] + Facebook[0]*Facebook[1]
+Amazon_rate_hours = [380, 4]
+Google_rate_hours = [400, 6]
+Facebook_rate_hours = [350, 10]
+pay = Amazon_rate_hours[0] * Amazon_rate_hours[1] + Google_rate_hours[0]*Google_rate_hours[1] + Facebook_rate_hours[0]*Facebook_rate_hours[1]
 print (pay)
 
 # A student can be enrolled to a class only if the class is not full
@@ -49,9 +49,16 @@ Product_amount = 1
 Premium_Member = False
 Product_amount = 2
 
+is_premium_member = True
+person_bought_more_than_two_items = False
+offer_has_not_expired = False
+
+offer_can_be_applied = offer_has_not_expired and (person_bought_more_than_two_items or is_premium_member)
+
+
 # Use the following code to follow the instructions below:
 
-username = 'codeup'
+username = ' codeup'
 password = 'notastrongpassword'
 
 # Create a variable that holds a boolean value for each of the following conditions:
