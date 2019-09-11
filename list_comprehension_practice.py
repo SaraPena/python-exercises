@@ -52,9 +52,19 @@ for fruit in fruits:
                 c += 1
     if c > 2:
         fruits_with_more_than_two_vowels.append(fruit)
-
 fruits_with_more_than_two_vowels
-        
+
+
+number_of_vowels = fruit.count("a") + fruit.count("e") + fruit.count("i") + fruit.count("o") + fruit.count("u")
+if number_of_vowels > 2:
+    print("has as LEAST two vowels")
+else:
+    print("has LESS than two vowels")
+
+fruits_with_more_than_two_vowels = [fruit for fruit in fruits if fruit.count("a") + fruit.count("e") + fruit.count("i") + fruit.count("o") + fruit.count("u") > 2]
+fruits_with_more_than_two_vowels
+
+
 
 
 
