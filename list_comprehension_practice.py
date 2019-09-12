@@ -131,15 +131,15 @@ primes
 
 x = 4
 
-def divisable(x):
+def prime(x):
     for n in range(2,x):
-        if x % n !=0:
-            return False
-        else:
+        if x % n !=0 and x > 1:
             return True
+        else:
+            return False
             break
 
-primes = [number for number in numbers if divisable(number) == False and number > 1]
+primes = [number for number in numbers if prime(x)]
 primes
 
 
