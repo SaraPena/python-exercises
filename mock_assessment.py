@@ -17,9 +17,6 @@
 #     >>> normalize_name('% Completed')
 #     'completed'
 
-
-s = "% Completed"
-
 def normalize_name(s):
     for c in  ['%', '@', '$']:
         s = s.replace(c,"")
