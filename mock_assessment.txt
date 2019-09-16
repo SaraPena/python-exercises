@@ -26,7 +26,7 @@ worry about it too much right now.
     >>> normalize_name('% Completed')
     'completed'
 
-1. Write a function named ``cumsum`` that accepts a list of numbers and returns
+2. Write a function named ``cumsum`` that accepts a list of numbers and returns
    a list that is the cumulative sum of the numbers in the list.
 
     - ``cumsum([1, 1, 1])`` returns ``[1, 2, 3]``
