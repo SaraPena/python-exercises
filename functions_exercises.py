@@ -34,10 +34,6 @@ def is_vowel(x):
     else:
         print(f'{x} is not a vowel. {x} is a consonant')
 
-is_vowel("a")
-is_vowel("e")
-is_vowel("alpsdfsaf")
-is_vowel("z")
 
 # 3. Define a function named is_constant. It should return True if the passed string is a consonant, False otherwise. Use you is_vowel function to accomplish this.
 
@@ -50,10 +46,6 @@ def is_consonant(x):
     elif len(x) > 1 or type(x) == int:
         return False
 
-is_consonant("a")
-is_consonant("e")
-is_consonant("alpsdfsaf")
-is_consonant("z")
 
 # 4. cap_if_consonant(word)
 
@@ -84,8 +76,6 @@ def calculate_tip(tip,bill):
 user_bill = input("How much was the bill? $")
 user_tip = input("How much would you like to tip between 0 and 1? ")
 
-calculate_tip(float(user_tip),float(user_bill))
-
 # 6. Define a function named apply_discount. 
 #    It should accept a original price, and discount percentage, return the price after the discount is applied.
 
@@ -102,9 +92,6 @@ def apply_discount(price,discount_percentage):
         discount_price_of_item = price - discount_amount
         return discount_price_of_item
 
-apply_discount(100,20)
-apply_discount(100,.20)
-apply_discount(100, -.2)
 
 # 7. Define a function named handle_commas. 
 #    It should accept a string that is a number that contains commas in it as input, and return a number as output.
@@ -120,7 +107,6 @@ def handle_commas(x):
         x = float(x.replace(",",""))
         return x
 
-handle_commas("1,000,000")
 
 # 8. Define a function named get_letter_grade. 
 #    It should accept a number and return the letter grade associated with the number (A-F).
@@ -134,7 +120,6 @@ def get_letter_grade(x):
     elif x < 70:
         return "F"
 
-print(f'Your grade of 90 is an {get_letter_grade(90)}')
 
 # 9. Define a function named remove_vowels that accepts a string and returns a string with all the vowels removed.
 
@@ -145,9 +130,6 @@ def remove_vowels(x):
             rv += l
     return rv
             
-
-print(f'If you remove the vowels from "Charlie" you get back "{remove_vowels("charlie")}"')
-
 # 10. Define a function named normalize_name.
 #     It should accept a string and return a valid python identifier, that is:
 #       anything that is not a valid python identifier should be removed.
