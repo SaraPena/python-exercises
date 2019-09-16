@@ -73,8 +73,8 @@ def calculate_tip(tip,bill):
         print("Tip Amount: $" +str(tip_amount))
         return tip_amount
 
-user_bill = input("How much was the bill? $")
-user_tip = input("How much would you like to tip between 0 and 1? ")
+#user_bill = input("How much was the bill? $")
+#user_tip = input("How much would you like to tip between 0 and 1? ")
 
 # 6. Define a function named apply_discount. 
 #    It should accept a original price, and discount percentage, return the price after the discount is applied.
