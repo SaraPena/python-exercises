@@ -34,6 +34,16 @@ def make_model(list_cars):
         cars.append(car['make'] + ' ' + car['model'])
     return cars
 
+cars = []
+cars.append({'make': 'Toyota', 'model': 'Camry'})
+cars.append({'make': 'Honda', 'model': 'Accord'})
+cars.append({'make': 'Ford', 'model': 'Fiesta'})
+cars.append({'make': 'Ford', 'model': 'F-150'})
+cars
+
+
+assert make_model(cars) == ['Toyota Camry', 'Honda Accord', 'Ford Fiesta', 'Ford F-150']
+
 def extract_time_components(s):
     """
     >>> extract_time_components('21:30:00')

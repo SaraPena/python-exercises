@@ -29,7 +29,7 @@ x = 123
 for digit in str(x):
     print(digit)
 
-s = '456 test'
+s = '456'
 int(s) + 1
 
 # String formatting
@@ -121,6 +121,8 @@ def who_likes_language(instructors):
 
 who_likes_language(instructors)
 
+
+# Updating Maggie's favorite_language key to 'matlab'
 instructors2 = [{'name': 'Zach', 'favorite_language': 'clojure'},{'name' : 'David', 'favorite_language' : 'matlab'},{'name': 'Maggie', 'favorite_language': 'matlab'}]
 
 who_likes_language(instructors2)
@@ -136,8 +138,11 @@ def who_likes_language(instructors):
             print('Debug: not adding {}'.format(instructor['name']))
     return instructors_that_like_the_language
 
+# adding another variable 'language' to find a specific language
+
 def who_likes_language(instructors,language):
     instructors_that_like_the_language = []
+
     for instructor in instructors:
         print('Debug: looking at instructor: {}'.format(instructor['name']))
         if instructor['favorite_language'] == language:
