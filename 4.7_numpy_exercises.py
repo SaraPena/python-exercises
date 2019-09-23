@@ -284,10 +284,3 @@ print(transpose_d.shape)
 # Exercise 10 - Reshape d into an array of 9 x 2.
 
 d.shape = (9, 2)
-
-
-
-
-
-
-
