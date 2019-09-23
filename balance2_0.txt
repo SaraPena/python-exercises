@@ -1,8 +1,0 @@
-balance : 0.00
-balance : 100.00
-balance : -200.00
-balance : 800.00
-balance : 803.00
-balance : 0.00
-balance : -802.00
-balance : 802.00
