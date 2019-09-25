@@ -32,8 +32,8 @@ len(a)
    # This is done by subtracting the mean from the each data point.
    # Center the data set.
 
- c = a - a.mean()
- c.mean()
+c = a - a.mean()
+c.mean()
 
 # 7. Calculate the z-score for each data point. 
 
@@ -163,7 +163,7 @@ evens_in_b = []
 for row in b:
     for number in row:
         if(number % 2 ==0):
-            evens_in_b.append()
+            evens_in_b.append(number)
 
 evens_in_b = b[b % 2 ==0]
 
@@ -250,6 +250,7 @@ np.sin(d)
 # Exercise 2 - Find the cosine of all the numbers in d.
 
 np.cos(d)
+
 
 # Exercise 3 - Find the tangent of all the numbers in d.
 
