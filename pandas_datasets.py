@@ -148,10 +148,12 @@ Mammals[Mammals.speed == Mammals.speed.max()]
 
 Specials = Mammals[Mammals.specials]
 
-len(Specials.specials)/len(Mammals.specials)
+(len(Specials.specials)/len(Mammals.specials)) * 100
 
 #   How many animals are hoppers that are above the median speed? What percentage is this?
 Fast_animals = Mammals[Mammals.speed > Mammals.speed.median()]
-Hoppers = len(Fast_animals[Fast_animals.hoppers].hoppers)
+Fast_Hoppers = len(Fast_animals[Fast_animals.hoppers].hoppers)
 
-Hoppers/len(Mammals.hoppers)
+Fast_animals.shape
+
+(Fast_Hoppers/len(Mammals.hoppers)) * 100
