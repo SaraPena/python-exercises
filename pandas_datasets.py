@@ -74,6 +74,7 @@ mpg = data('mpg', show_doc = True)
 #   How many rows and columns are there?
 mpg = data('mpg')
 mpg.describe()
+mpg.shape
 
 #   What are the data types of each column?
 mpg.info()
@@ -99,5 +100,58 @@ mpg[mpg.city >= mpg.highway]
 mpg['mileage_difference'] = mpg.highway - mpg.city
 mpg
 
-# Which car (or cars) has the highest mileage difference?
-mpg[mileage_difference == mileage_difference.max()]
+#   Which car (or cars) has the highest mileage difference?
+mpg.sort_values(by = 'mileage_difference', ascending = False).head()
+mpg[mpg.mileage_difference == mpg.mileage_difference.max()]
+
+#   Which compact class car has the lowest highway mielage? The best?
+mpg = mpg.rename (columns = {'class': 'cls'})
+mpg.head()
+
+compact_cars = mpg[mpg.cls == 'compact']
+compact_cars.head()
+
+compact_cars[compact_cars.highway == compact_cars.highway.min()]
+compact_cars[compact_cars.highway == compact_cars.highway.max()]
+
+#   Create a column named average_mileage that is the mean of the city and highway mileage.
+mpg['average_mileage'] = (mpg.highway + mpg.city)/2
+mpg.head()
+
+#   Which dodge car has the best average mileage? The worst?
+dodge_cars = mpg[mpg.manufacturer == 'dodge']
+dodge_cars[dodge_cars.average_mileage == dodge_cars.average_mileage.max()]
+dodge_cars[dodge_cars.average_mileage == dodge_cars.average_mileage.min()]
+
+# 3. Load the Mammals dataset. Read the documentation for it, and use the data to answer the questions:
+# data('mpg', show_doc = True) # view the documentation for the dataset
+
+data('Mammals', show_doc = True)
+Mammals = data('Mammals')
+Mammals.head()
+#   How many rows and columns are there?
+Mammals.info()
+
+#       There are 107 rows, and 4 columns.
+
+# What are the data types?
+#       The data types are floats and booleans.
+
+#   Summarize the dataframe with .info and .describe
+
+Mammals.info()
+Mammals.describe()
+
+Mammals[Mammals.speed == Mammals.speed.max()]
+
+#   What is the overall percentage of specials?
+
+Specials = Mammals[Mammals.specials]
+
+len(Specials.specials)/len(Mammals.specials)
+
+#   How many animals are hoppers that are above the median speed? What percentage is this?
+Fast_animals = Mammals[Mammals.speed > Mammals.speed.median()]
+Hoppers = len(Fast_animals[Fast_animals.hoppers].hoppers)
+
+Hoppers/len(Mammals.hoppers)
