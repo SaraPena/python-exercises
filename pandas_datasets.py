@@ -66,3 +66,38 @@ df.sort_values(by = ['passing_english', 'english'])
 
 df['overall_grade'] = (math_grades + english_grades + reading_grades)/3
 df
+
+#   2. Load the mpg dataset. Read the documentation for the dataset and use it for the following questions.
+mpg = data('mpg', show_doc = True)
+
+
+#   How many rows and columns are there?
+mpg = data('mpg')
+mpg.describe()
+
+#   What are the data types of each column?
+mpg.info()
+
+#   Summarize the dataframe with .info and .describe
+mpg.info()
+mpg.describe()
+
+#   Rename the cty column to city.
+
+mpg = mpg.rename(columns = {'cty' : 'city'})
+mpg
+
+#   Rename the hwy column to highway
+
+mpg = mpg.rename(columns = {'hwy': 'highway'})
+mpg
+
+#   Do any cars have better city mileage than highway mileage?
+mpg[mpg.city >= mpg.highway]
+
+#   Create a column named mileage_difference this column should contain the difference between highway and city mileage for each car.
+mpg['mileage_difference'] = mpg.highway - mpg.city
+mpg
+
+# Which car (or cars) has the highest mileage difference?
+mpg[mileage_difference == mileage_difference.max()]
