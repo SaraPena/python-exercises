@@ -157,3 +157,5 @@ Fast_Hoppers = len(Fast_animals[Fast_animals.hoppers].hoppers)
 Fast_animals.shape
 
 (Fast_Hoppers/len(Mammals.hoppers)) * 100
+
+mpg[["highway"]]
