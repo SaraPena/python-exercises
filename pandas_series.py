@@ -116,7 +116,6 @@ o_greater_or_equal_to_two
 # m. Write the code to get only the fruits containing "berry" in the name
 
 berry = fruits.str.findall('berry', flags = re.IGNORECASE)
-fruits.str.
 
 ## match object research
 """
@@ -164,3 +163,59 @@ bins_four = money_float.value_counts(bins = 4)
 # Plot a histogram of the data. Be sure to include a title and axis labels.
 
 plt.hist(money_float)
+
+# 3. Use pandas to create a Series from the following exam scores: 
+exam_scores = [60, 86, 75, 62, 93, 71, 60, 83, 95, 78, 65, 72, 69, 81, 96, 80, 85, 92, 82, 78]
+
+exam_scores = pd.Series(exam_scores)
+
+# What is the minimum exam score? The max, mean, and median?
+exam_scores.describe()
+
+# Convert each of the numbers above into a letter grade. For example, 86 should be a B and 95 should be an 'A'
+
+def letter_grade(grade):
+        if grade >= 90.0:
+            return "A"
+        elif grade >=80.0:
+            return "B"
+        elif grade >=70.0:
+            return "C"
+        else:
+            return "F"
+
+exam_letters = exam_scores.apply(letter_grade)
+
+# Write the code necessary to implement a curve. I.e. that grade closest to 100 should be converted to a 100, and that many points should be given to every other score as well.
+
+curve = 100 - exam_scores.max()
+curved_scores = curve + exam_scores
+
+# Use pandas to create a Series from the following string
+
+letters = 'hnvidduckkqxwymbimkccexbkmqygkxoyndmcxnwqarhyffsjpsrabtjzsypmzadfavyrnndndvswreauxovncxtwzpwejilzjrmmbbgbyxvjtewqthafnbkqplarokkyydtubbmnexoypulzwfhqvckdpqtpoppzqrmcvhhpwgjwupgzhiofohawytlsiyecuproguy'
+
+letters = pd.Series(list(letters))
+
+# What is the most frequently occuring letter?
+
+letters.value_counts()[letters.value_counts() == letters.value_counts().max()]
+letters.value_counts()[letters.value_counts() == letters.value_counts().max()]
+
+# How many vowels are in the list?
+
+letters.apply(count_vowels).sum()
+
+# How many consonants are in the list?
+
+len(letters) - letters.apply(count_vowels).sum()
+
+# Create a series that has all of the same letters, but uppercased
+
+letters.str.upper()
+
+# Create a bar plot of the frequencies of the most 6 most frequently occuring letters.
+
+top_seven_letters = letters.value_counts().head(7).sort_index()
+
+top_seven_letters.plot.bar(rot=0)
