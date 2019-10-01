@@ -118,6 +118,7 @@ top_four_items = (chipotle.groupby('item_name')
 )
 
 sns.barplot(data = top_four_items, y = 'item_price', x = 'item_name')
+plt.xticks(rotation = 90)
 
 plt.ylabel('revenue')
 
