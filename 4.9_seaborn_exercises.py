@@ -16,16 +16,20 @@ sns.distplot(iris.petal_length)
 
 # 2. Is there a correlation between petal length and petal width?
 iris.corr()
+r = iris.corr().loc['petal_length', 'petal_width']
 
 sns.relplot(data = iris, x = 'petal_length', y = 'petal_width')
 
+plt.text(1.5, 2, f'r = {r:.2}')
 # Would it be reasonable to predict speces based on sepal width and sepal length?
 
-sns.relplot(data = iris, x = 'sepal_length', y = 'sepal_width')
+sns.relplot(data = iris, x = 'sepal_width', y = 'sepal_length', hue = 'species')
 
 # Which features would be best used to predict species?
 
 sns.relplot(data = iris, x = 'petal_length', y = 'petal_width')
+
+sns.pairplot(data=iris,hue = 'species')
 
 # 1. Using the lesson as an example, use seaborn's load_dataset function to load the anscombe data set. Use pandas to group the data by dataset column, and calculate summary statistics for each dataset.
     # What do you notice?
@@ -36,6 +40,7 @@ anscombe.groupby('dataset').mean()
 anscombe.groupby('dataset').count()
 anscombe.groupby('dataset').median()
 anscombe.groupby('dataset').std()
+anscombe.groupby('dataset').describe()
 
 sns.relplot(data = anscombe, x = 'x', y = 'y', col = 'dataset')
 
@@ -48,6 +53,8 @@ data('InsectSprays', show_doc= True)
 InsectSprays = data('InsectSprays')
 
 sns.boxplot(data = InsectSprays, y = 'count', x = 'spray', hue = 'spray' )
+sns.boxplot(data = InsectSprays, y = 'count', x = 'spray')
+
 plt.legend(loc = 'upper right', bbox_to_anchor = (.8,1))
 
 # 3. Load the swiss dataset and read it's documentation. Create visualization to answer the following questions:
@@ -57,8 +64,12 @@ data('swiss', show_doc = True)
 swiss = data('swiss')
 
 # Create an attribute named is_catholic that holds a boolean value of whether or not the province is Catholic. (Choose a cutoff point for what constitutes Catholic.)
+sns.distplot(swiss.Catholic)
 
-swiss['is_catholic'] = swiss['Catholic'] > 60 
+swiss['is_catholic'] = swiss['Catholic'] > 50 
+swiss.Catholic.apply(lambda n: 'Catholic' if n > 50 else 'Not Catholic')
+
+sns.boxplot(data = swiss, y = 'Fertility', x = 'is_catholic')
 
 swiss.corr()
 
@@ -70,7 +81,7 @@ group_is_catholic.plot.bar(x = 'is_catholic')
 
 # What measure corretlates most strongly with fertility?
 
-swiss.corr()
+swiss.corr().Fertility
 
 sns.relplot(data = swiss, x = 'Education', y = 'Fertility', hue = 'is_catholic')
 
@@ -88,10 +99,26 @@ chipotle.head()
 chipotle.info()
 
 chipotle['item_price'] = chipotle['item_price'].str.replace('$',"").astype(float)
-chipotle.info()
+chipotle.info() #check that the item_price is a float type
 
-chipotle['revenue'] = chipotle['item_price'] * chipotle['quantity']
-chipotle.groupby('item_name').item_price.sum().sort_values(ascending = False).head(4).plot.bar(rot=0)
+chipotle.groupby('item_name').sum()
+
+(chipotle.groupby('item_name')
+ .item_price.sum()
+ .sort_values(ascending = False)
+ .head(4)
+ .plot.bar(rot=0))
+
+top_four_items = (chipotle.groupby('item_name')
+ .sum()
+ .sort_values(by = 'quantity', ascending = False)
+ .drop(columns = ['id','order_id'])
+ .head(4)
+ .reset_index()
+)
+
+sns.barplot(data = top_four_items, y = 'item_price', x = 'item_name')
+
 plt.ylabel('revenue')
 
 # 5. Load the sleepstudy dataset and read it's documentation.
@@ -101,12 +128,20 @@ plt.ylabel('revenue')
 sleepstudy = data('sleepstudy')
 sleepstudy.info()
 
+sleepstudy.Subject  = 'subject_' + sleepstudy.Subject.astype(str)
+
+
+plt.figure(figsize = (12,12))
+sns.lineplot(data = sleepstudy, x = 'Days', y = 'Reaction', hue = 'Subject',alpha = .3, palette = 'vlag')
+sns.lineplot(data = sleepstudy, y = 'Reaction', x = 'Days', color = 'white')
+
+
 sum_reactions_by_days = sleepstudy.groupby('Days').Reaction.sum()
 number_of_subjects = sleepstudy['Subject'].nunique()
 
 average_change = sum_reactions_by_days/number_of_subjects
 
-sns.lineplot(data=sleepstudy, x = 'Days', y = 'Reaction', hue = 'Subject', color = 'Orange')
+sns.lineplot(data=sleepstudy, x = 'Days', y = 'Reaction', hue = 'Subject', color = 'Blues')
 sns.lineplot(data = average_change, color = 'Red')
 
 # sns.lineplot(data=sleepstudy[['Reaction', 'Subject']]
