@@ -39,4 +39,39 @@ anscombe.groupby('dataset').std()
 
 sns.relplot(data = anscombe, x = 'x', y = 'y', col = 'dataset')
 
-# 
+# 2. Load the InsectSprays dataset and read it's documentation. Create visualizations to answer the following questions:
+
+from pydataset import data
+
+data('InsectSprays', show_doc= True)
+
+InsectSprays = data('InsectSprays')
+
+sns.boxplot(data = InsectSprays, y = 'count', x = 'spray', hue = 'spray' )
+plt.legend(loc = 'upper right', bbox_to_anchor = (.8,1))
+
+# 3. Load the swiss dataset and read it's documentation. Create visualization to answer the following questions:
+
+data('swiss', show_doc = True)
+
+swiss = data('swiss')
+
+# Create an attribute named is_catholic that holds a boolean value of whether or not the province is Catholic. (Choose a cutoff point for what constitutes Catholic.)
+
+swiss['is_catholic'] = swiss['Catholic'] > 60 
+
+swiss.corr()
+
+sns.relplot(data = swiss, x = 'is_catholic', y = 'Fertility', hue = 'is_catholic')
+
+group_is_catholic = swiss.groupby('is_catholic').count()['Fertility']
+
+group_is_catholic.plot.bar(x = 'is_catholic')
+
+# What measure corretlates most strongly with fertility?
+
+swiss.corr()
+
+sns.relplot(data = swiss, x = 'Education', y = 'Fertility', hue = 'is_catholic')
+
+# Using the chipotle dataset from the previous exercise, create a bar chart that shows the 4 most popular items and the revenue produced by each.
